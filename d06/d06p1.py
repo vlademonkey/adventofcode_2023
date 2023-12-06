@@ -1,5 +1,7 @@
-import operator
-from functools import reduce
+import math
+
+# import operator
+# from functools import reduce
 
 final_list = []
 times = dists = []
@@ -17,4 +19,6 @@ for idx, time in enumerate(times):
     final_list.append(num_tests_passed)
 
 print(final_list)
-print(reduce(operator.mul, final_list))
+print(math.prod(final_list))
+
+# print(reduce(operator.mul, final_list))
