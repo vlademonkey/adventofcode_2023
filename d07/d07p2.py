@@ -3,8 +3,8 @@ import numpy
 
 CARD_TO_NUM = {
     "T": 10,
-    "J": 11,
     "Q": 12,
+    "J": 0,  # Joker!
     "K": 13,
     "A": 14,
 }
@@ -16,13 +16,25 @@ class CCHand:
         self.bid = int(bid)
         self.text = cards
         self.cards = []
+        self.num_jokers = 0
         for c in cards:
             c = CARD_TO_NUM[c] if c in CARD_TO_NUM else int(c)
+            if c == 0:
+                self.num_jokers += 1
             self.cards.append(c)
 
+        # print(f"{self.text=} {self.cards=} {self.num_jokers=}")
+
         # Calculate hand strength
-        cards, counts = numpy.unique(self.cards, return_counts=True)
-        counts = list(counts)
+        cards_no_jokers = numpy.array([card for card in self.cards if card != 0])
+        if len(cards_no_jokers) == 0:  # All jokers edge-case.
+            counts = [5]
+        else:
+            _, counts = numpy.unique(cards_no_jokers, return_counts=True)
+            max_idx = counts.argmax(axis=0)  # Max card count
+            counts[max_idx] += self.num_jokers  # Add jokers
+            counts = list(counts)
+
         self.strength = 0
         if 5 in counts:  # Five of a kind
             self.strength = 7
@@ -40,7 +52,7 @@ class CCHand:
             self.strength = 1
 
     def __eq__(self, other):
-        return self.strength == other.strength and self.cards == other.cards
+        return self.text == other.text
 
     def __lt__(self, other):
         if self.strength != other.strength:
@@ -58,6 +70,7 @@ with open("input.txt") as fin:
 
 score = 0
 for idx, hand in enumerate(sorted(hands)):
+    # print(f"{hand.text=} {hand.strength=}")
     score += (idx + 1) * hand.bid
 
 print(score)
