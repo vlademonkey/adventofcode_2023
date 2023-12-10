@@ -215,26 +215,17 @@
     "files.associations": {
         "*.ksh": "shellscript",
         "*.ksi": "shellscript",
-        "*.job": "shellscript",
-        "*.jti": "shellscript",
-        "*.xfr": "shellscript",
-        "*.ins": "shellscript",
-        "*.dat": "shellscript",
-        "*.cfg": "shellscript",
         "**/*.html": "html",
         "**/templates/**/*.html": "django-html",
         "**/runbook/**/*.html": "django-html",
         "**/templates/**/*": "django-txt",
     },
-    "python.defaultInterpreterPath": "C:\\Apps\\Python38-32\\python.exe",
+    //  "python.defaultInterpreterPath": "C:\\Apps\\Python38-32\\python.exe",
     "python.languageServer": "Pylance",
     "python.terminal.executeInFileDir": true,
     "python.analysis.typeCheckingMode": "basic", // "off", "basic", or "strict"
-    // Python include paths, run once:
-    // mklink /D C:\AAA_Base\vscode_lib\amp C:\AAA_Base\amp-base-dev\lib
-    // mklink /D C:\AAA_Base\vscode_lib\igt C:\AAA_Base\amp-python\igtlib\src\igt
     "python.analysis.extraPaths": [
-        "C:\\AAA_Base\\vscode_lib",
+        "",
     ],
     "flake8.args": [
         "--max-line-length=100",
@@ -250,14 +241,10 @@
     //     "C:\\Apps\\Python38-32\\Scripts\\black.exe"
     // ],
     "perlSyntax.includePaths": [
-        "C:\\Code\\automation\\trunk\\include",
-        "C:\\AAA_Base\\sch-base\\sch\\gtech\\lib\\perl",
-        "C:\\AAA_Base\\ops-auto-install\\lib",
+        "",
     ],
     "perl.perlInc": [
-        "C:\\Code\\automation\\trunk\\include",
-        "C:\\AAA_Base\\sch-base\\sch\\gtech\\lib\\perl",
-        "C:\\AAA_Base\\ops-auto-install\\lib",
+        "",
     ],
     "restructuredtext.linter.doc8.extraArgs": [
         "--max_line_length",
@@ -289,7 +276,7 @@
             "end": "",
             "blankLinesAfter": 0,
             "beforeHeader": [
-                "#!/opt/igt/python",
+                "#!/usr/bin/env python",
                 "# -*- coding:utf-8 -*-",
                 "\"\"\"",
                 "Description:",
